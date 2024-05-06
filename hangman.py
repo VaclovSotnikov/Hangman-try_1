@@ -1,7 +1,8 @@
 import random
+from typing import List
 
 class Hangman():
-    def __init__(self):
+    def __init__(self) -> None:
         print("Welcome to 'Hangman', are you ready to die?")
         print("(1) Yes, for I am already dead.\n(2) No, get me outta here!")
         user_choice_1 = input("->")
@@ -16,7 +17,7 @@ class Hangman():
             print("I'm sorry, I'm hard of hearing, could you repeat that?")
             self.__init__()
 
-    def start_game(self):
+    def start_game(self) ->None:
         text = ''' 
         A crowd begins to gather, they can't wait to see some real
         justice. There's just one thing, you aren't a real criminal.
@@ -29,7 +30,7 @@ class Hangman():
         print(text)
         self.core_game()
 
-    def core_game(self):
+    def core_game(self) ->None:
         lives = 6 
         total_tries = 10 
         letters_used = ""
@@ -67,7 +68,7 @@ class Hangman():
         print("You've made too many wrong guesses! Game over.")
         self.restart_game()
 
-    def hangman_graphic(self, lives):
+    def hangman_graphic(self, lives: int) ->None:
         if lives == 0:
             print("________      ")
             print("|      |      ")
@@ -122,13 +123,13 @@ class Hangman():
             print("GAME OVER!")
             self.restart_game()
 
-    def progress_updater(self, guess, the_word, progress):
+    def progress_updater(self, guess: str, the_word: str, progress: List[str] ) ->str:
         for i in range(len(the_word)):
             if guess == the_word[i]:
                 progress[i] = guess
         return "".join(progress)
 
-    def restart_game(self):
+    def restart_game(self) ->None:
         print("Would you like to play again?")
         print("(1) Yes\n(2) No")
         user_choice = input("-> ")
