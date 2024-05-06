@@ -43,7 +43,7 @@ class Hangman():
             
             if guess in the_word and guess not in letters_used:
                 print("As it turns out, your guess was RIGHT!")
-                letters_used += "," + guess
+                letters_used += guess + ","
                 lives -= 1
                 updated_progress = self.progress_updater(guess, the_word, progress)
                 print("Progress: " + updated_progress)
@@ -56,7 +56,7 @@ class Hangman():
                 lives -= 1
                 print("Things aren't looking so good, that guess was WRONG!") 
                 print("You have", lives, "lives left.")
-                letters_used += "," + guess
+                letters_used += guess + ","
                 self.hangman_graphic(6 - lives)
                 print("Progress: " + "".join(progress))
                 print("Letters used: " + letters_used)
